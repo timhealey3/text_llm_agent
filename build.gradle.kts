@@ -19,8 +19,14 @@ repositories {
     mavenCentral()
 }
 
+kotlin
+
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.xerial:sqlite-jdbc:3.45.3.0")
+    implementation("org.springframework:spring-webflux")
+    implementation("io.netty:netty-resolver-dns-native-macos:4.1.108.Final:osx-aarch_64")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
