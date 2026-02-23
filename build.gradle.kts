@@ -27,6 +27,7 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.45.3.0")
     implementation("org.springframework:spring-webflux")
     implementation("io.netty:netty-resolver-dns-native-macos:4.1.108.Final:osx-aarch_64")
+    implementation("io.github.ollama4j:ollama4j:1.1.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
