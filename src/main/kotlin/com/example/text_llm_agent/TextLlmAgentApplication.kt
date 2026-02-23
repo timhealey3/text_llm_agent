@@ -5,11 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class TextLlmAgentApplication {
+class TextLlmAgentApplication(private val sqlUtil: SQLUtil) {
 
     @PostConstruct
     fun init() {
-        val sqlUtil = SQLUtil()
         sqlUtil.initDb()
     }
 }

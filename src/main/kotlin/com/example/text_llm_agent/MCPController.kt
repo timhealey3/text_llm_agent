@@ -7,12 +7,13 @@ import io.github.ollama4j.models.response.OllamaResult
 
 @RestController
 class MCPController(
-    private var telegramService: TelegramService,
+    private val telegramService: TelegramService,
+    private val sqlUtil: SQLUtil,
+    private val llm: LLMAPI
 ) {
 
     @GetMapping("/text-llm-agent")
     fun textEndPoint(): Boolean {
-        val sqlUtil = SQLUtil()
         val index = sqlUtil.queryIndex()
         val returnData: TelegramData = telegramService.getUpdates((index.toLong() + 1).toString())
         var prompt = ""
@@ -23,11 +24,10 @@ class MCPController(
             lastIndex = x.update_id.toString()
             lastChatID = x.message?.chat?.id.toString()
         }
-        val llm = LLMAPI()
-        //val llmResponse: OllamaResult? = llm.queryLLM(prompt)
+        val llmResponse: OllamaResult? = llm.queryLLM(prompt)
         sqlUtil.addIndex(lastIndex)
         return try {
-            telegramService.postMessage(lastChatID, prompt)
+            telegramService.postMessage(lastChatID, llmResponse?.response.toString())
             true
         } catch (e: Exception) {
             false

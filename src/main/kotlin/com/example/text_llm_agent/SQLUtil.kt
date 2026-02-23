@@ -1,10 +1,12 @@
 package com.example.text_llm_agent
 
+import org.springframework.stereotype.Component
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLData
 
+@Component
 class SQLUtil {
     private val url = "jdbc:sqlite:text.db"
 
